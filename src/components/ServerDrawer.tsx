@@ -25,6 +25,7 @@ export function ServerDrawer({
   const closeRef = useRef<HTMLButtonElement>(null);
   const serverEvents = getServerEvents(events, server.id).slice(0, 5);
 
+  // Drawer 開啟時鎖定背景捲動並將焦點移入；關閉後還原原本狀態。
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     const returnFocusTo = returnFocusRef.current;
@@ -39,6 +40,7 @@ export function ServerDrawer({
       }
       if (event.key !== "Tab") return;
 
+      // 將 Tab 導覽限制在 Drawer 內，避免鍵盤焦點跑到背景內容。
       const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
         'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
       );

@@ -31,6 +31,7 @@ export function monitorReducer(
     case "TICK": {
       if (state.isPaused) return state;
 
+      // 每個 Tick 依目前模式推進指標，再由新指標重新推導狀態與事件。
       const generatedEvents: ServerEvent[] = [];
       const servers = state.servers.map((server) => {
         const mode: SimulationMode = server.recoveryMode
@@ -54,6 +55,7 @@ export function monitorReducer(
           history: [
             ...server.history,
             { ...metrics, timestamp: action.timestamp },
+            // Sparkline 只需要最近 20 筆，避免長時間執行後資料持續增長。
           ].slice(-20),
         };
         const event = generateServerEvent(server, next, action.timestamp);
@@ -64,6 +66,7 @@ export function monitorReducer(
       return {
         ...state,
         servers,
+        // 新事件顯示在最前方，Feed 最多保留最近 50 筆。
         events: [...generatedEvents, ...state.events].slice(0, 50),
       };
     }

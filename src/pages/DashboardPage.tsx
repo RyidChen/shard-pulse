@@ -35,6 +35,7 @@ export function DashboardPage({
   }
 
   const selectServer = (serverId: string, trigger: HTMLButtonElement) => {
+    // 保留開啟 Drawer 的卡片，關閉後可把鍵盤焦點送回原位置。
     returnFocusRef.current = trigger;
     monitor.selectServer(serverId);
   };

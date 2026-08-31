@@ -25,6 +25,7 @@ export function useGameMonitor({
   const [error, setError] = useState<string | null>(null);
   const [loadAttempt, setLoadAttempt] = useState(0);
 
+  // 用短暫延遲模擬初始連線；重試時 loadAttempt 會觸發一次新的載入流程。
   useEffect(() => {
     const timer = window.setTimeout(() => {
       if (simulateInitialLoadError && loadAttempt === 0) {
@@ -38,6 +39,7 @@ export function useGameMonitor({
     return () => window.clearTimeout(timer);
   }, [loadAttempt, simulateInitialLoadError]);
 
+  // 只有 Dashboard 可用且未暫停時才啟動更新，依賴改變時會先清除舊計時器。
   useEffect(() => {
     if (loading || error || state.isPaused) return;
 

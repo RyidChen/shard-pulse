@@ -12,6 +12,7 @@ export function generateServerEvent(
     timestamp,
   };
 
+  // 依嚴重度排列並立即回傳，確保同一台伺服器每次 Tick 最多新增一筆事件。
   if (previous.status !== "offline" && next.status === "offline") {
     return {
       ...base,
@@ -46,6 +47,7 @@ export function generateServerEvent(
     };
   }
 
+  // 比較前後數值，只記錄第一次跨過門檻，避免每次 Tick 重複洗版。
   if (previous.metrics.packetLoss < 1 && next.metrics.packetLoss >= 1) {
     return {
       ...base,

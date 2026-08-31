@@ -16,6 +16,7 @@ export function Sparkline({
   const max = Math.max(...values);
   const range = max - min || 1;
   const denominator = Math.max(values.length - 1, 1);
+  // 將任意數量與範圍的 Ping 正規化到固定的 100 × 34 SVG 座標。
   const points = values
     .map((value, index) => {
       const x = (index / denominator) * 100;

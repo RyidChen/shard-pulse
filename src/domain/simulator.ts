@@ -11,6 +11,7 @@ export function generateNextMetrics(
   mode: SimulationMode = "normal",
   random: () => number = Math.random,
 ): ServerMetrics {
+  // 各模式都從目前數值漸進變化，避免每次更新出現不自然的大幅跳動。
   const pingChange =
     mode === "overload"
       ? randomDelta(16, 30, random)
