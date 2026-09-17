@@ -1,3 +1,4 @@
+// 顯示一台伺服器的狀態、四項 Metrics 與 Sparkline；本身是可鍵盤操作的 Button。
 import type { MouseEvent } from "react";
 import type { GameServer } from "../types/server";
 import { Sparkline } from "./Sparkline";

@@ -1,3 +1,4 @@
+// 受控的搜尋框及狀態下拉選單。
 import type { ServerStatus } from "../types/server";
 
 interface ServerFiltersProps {

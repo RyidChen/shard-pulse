@@ -1,3 +1,4 @@
+// 初始化時的 Skeleton UI。
 export function LoadingDashboard() {
   return (
     <div

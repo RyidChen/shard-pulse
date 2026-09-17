@@ -1,3 +1,4 @@
+// 顯示最新 12 筆重要事件。
 import type { ServerEvent } from "../types/server";
 
 const timeFormatter = new Intl.DateTimeFormat("zh-TW", {

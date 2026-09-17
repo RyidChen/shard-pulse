@@ -14,10 +14,15 @@ export interface MetricSnapshot extends ServerMetrics {
 
 export interface GameServer {
   id: string;
+  // 標題
   name: string;
+  //副標題
   region: string;
+  // 右上狀態
   status: ServerStatus;
+  // 4 個指標：ping、serverLoad、players、packetLoss
   metrics: ServerMetrics;
+  // 每筆歷史資料包含 4 個指標與時間戳
   history: MetricSnapshot[];
   incidentMode: "overload" | null;
   recoveryMode: boolean;

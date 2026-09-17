@@ -1,3 +1,4 @@
+// 將 Server Status 對應成文字與顏色。
 import type { ServerStatus } from "../types/server";
 
 const styles: Record<ServerStatus, { label: string; className: string }> = {

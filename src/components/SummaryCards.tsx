@@ -1,3 +1,4 @@
+// 顯示總玩家數、各狀態數量與平均 Ping。
 import type { MonitorSummary } from "../domain/selectors";
 
 const numberFormatter = new Intl.NumberFormat("zh-TW");

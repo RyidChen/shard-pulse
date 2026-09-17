@@ -1,3 +1,4 @@
+// 不使用圖表套件，以原生 SVG 把最近 Ping 歷史轉成折線。
 import type { MetricSnapshot } from "../types/server";
 
 interface SparklineProps {

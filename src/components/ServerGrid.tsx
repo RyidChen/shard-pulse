@@ -1,3 +1,4 @@
+// 排列 Server Cards；沒有搜尋結果時顯示 Empty State。
 import type { GameServer } from "../types/server";
 import { ServerCard } from "./ServerCard";
 

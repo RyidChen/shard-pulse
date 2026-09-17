@@ -22,29 +22,27 @@ export function filterServers(
 }
 
 export function getMonitorSummary(servers: GameServer[]): MonitorSummary {
-  if (servers.length === 0) {
-    return {
-      totalPlayers: 0,
-      healthy: 0,
-      warning: 0,
-      critical: 0,
-      averagePing: 0,
-    };
+  const summary: MonitorSummary = {
+    totalPlayers: 0,
+    healthy: 0,
+    warning: 0,
+    critical: 0,
+    averagePing: 0,
+  };
+  let totalPing = 0;
+
+  for (const server of servers) {
+    summary.totalPlayers += server.metrics.players;
+    totalPing += server.metrics.ping;
+    if (server.status !== "offline") {
+      summary[server.status] += 1;
+    }
   }
 
-  return {
-    totalPlayers: servers.reduce(
-      (total, server) => total + server.metrics.players,
-      0,
-    ),
-    healthy: servers.filter((server) => server.status === "healthy").length,
-    warning: servers.filter((server) => server.status === "warning").length,
-    critical: servers.filter((server) => server.status === "critical").length,
-    averagePing: Math.round(
-      servers.reduce((total, server) => total + server.metrics.ping, 0) /
-        servers.length,
-    ),
-  };
+  summary.averagePing = servers.length === 0
+    ? 0
+    : Math.round(totalPing / servers.length);
+  return summary;
 }
 
 export function getServerEvents(

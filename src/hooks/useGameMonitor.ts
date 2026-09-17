@@ -11,7 +11,7 @@ interface UseGameMonitorOptions {
 }
 
 const initialState: MonitorState = {
-  servers: initialServers,
+  servers: initialServers, // 取得初始伺服器資料，並推導出初始狀態。
   events: [],
   isPaused: false,
   selectedServerId: null,

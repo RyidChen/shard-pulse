@@ -20,10 +20,14 @@ export function DashboardPage({
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState<ServerStatus | "all">("all");
   const returnFocusRef = useRef<HTMLButtonElement | null>(null);
+
+  // search = 搜尋的內容  status = 右方狀態下拉選項
   const filteredServers = useMemo(
     () => filterServers(monitor.servers, search, status),
     [monitor.servers, search, status],
   );
+
+  // 統計資訊，包含總玩家數、各狀態伺服器數量、平均延遲等。
   const summary = useMemo(
     () => getMonitorSummary(monitor.servers),
     [monitor.servers],
@@ -42,12 +46,6 @@ export function DashboardPage({
 
   return (
     <div className="min-h-dvh bg-slate-950 text-slate-100">
-      <a
-        href="#dashboard-content"
-        className="sr-only z-[60] rounded-md bg-cyan-400 px-4 py-2 font-semibold text-slate-950 focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-      >
-        跳至主要監控內容
-      </a>
       <DashboardHeader
         isPaused={monitor.isPaused}
         onPause={monitor.pause}

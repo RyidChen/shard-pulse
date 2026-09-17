@@ -1,3 +1,4 @@
+// 模擬載入失敗與 Retry。
 export function ErrorState({
   message,
   onRetry,

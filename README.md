@@ -36,6 +36,12 @@ npm run lint
 npm run build
 ```
 
+使用 Node.js 22.18+ 或 24+ 可執行模擬數值與摘要統計測試（不需額外安裝測試套件）：
+
+```bash
+node tests/monitor.test.mjs
+```
+
 ## 架構
 
 ```text

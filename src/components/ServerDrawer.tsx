@@ -1,3 +1,6 @@
+// Server 詳情、近期事件、Overload／Recovery；
+// 也處理 Escape、Focus Trap、焦點還原與背景捲動鎖定。
+
 import { useEffect, useRef, type RefObject } from "react";
 import { getServerEvents } from "../domain/selectors";
 import type { GameServer, ServerEvent } from "../types/server";
